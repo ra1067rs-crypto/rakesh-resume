@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rakesh S – Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #0f1117;
+    --surface: #161b27;
+    --border:  #1e2535;
+    --accent:  #6366f1;
+    --accent2: #818cf8;
+    --text:    #e2e8f0;
+    --muted:   #64748b;
+    --tag-bg:  #1e2535;
+    --tag-txt: #818cf8;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Header ── */
+  header {
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+    margin-bottom: 48px;
+  }
+  header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #fff;
+    line-height: 1.1;
+  }
+  header .role {
+    font-size: 0.95rem;
+    color: var(--accent2);
+    font-weight: 500;
+    margin: 6px 0 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .contact a { color: var(--muted); text-decoration: none; }
+  .contact a:hover { color: var(--accent2); }
+
+  /* ── Section ── */
+  section { margin-bottom: 36px; }
+  .sec-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Profile ── */
+  .profile-text {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.8;
+    max-width: 720px;
+  }
+
+  /* ── Skills Grid ── */
+  .skills-grid {
+    display: grid;
+    gap: 10px;
+  }
+  .skill-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 8px;
+    align-items: start;
+  }
+  .skill-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent2);
+    font-family: 'JetBrains Mono', monospace;
+    padding-top: 2px;
+  }
+  .skill-value {
+    font-size: 0.84rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  /* ── Timeline (Education / Experience) ── */
+  .timeline { display: flex; flex-direction: column; gap: 20px; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    border-left: 2px solid var(--border);
+    padding-left: 18px;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    position: absolute;
+    left: -5px;
+    top: 6px;
+  }
+  .tl-title {
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .tl-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .tl-period {
+    font-size: 0.75rem;
+    color: var(--accent2);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+  .tl-bullets { margin-top: 6px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .tl-bullets li {
+    font-size: 0.83rem;
+    color: #94a3b8;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .tl-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .gh-links { display: flex; flex-direction: column; gap: 2px; margin-top: 6px; }
+  .gh-links a {
+    font-size: 0.78rem;
+    color: var(--accent2);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .gh-links a:hover { text-decoration: underline; }
+
+  /* ── Project card ── */
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .project-card h3 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .tech-line { font-size: 0.78rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; }
+  .tech-line span {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-txt);
+    border-radius: 4px;
+    padding: 1px 8px;
+    margin: 2px 3px 2px 0;
+    font-size: 0.75rem;
+  }
+
+  /* ── Soft Skills ── */
+  .soft-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.82rem;
+    color: #94a3b8;
+  }
+
+  /* ── Achievements ── */
+  .ach-list { display: flex; flex-direction: column; gap: 8px; }
+  .ach-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 0.84rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    .skill-row { grid-template-columns: 1fr; }
+    .page { padding: 32px 16px 60px; }
+  }
+
+  @media print {
+    body { background: #fff; color: #111; }
+    :root { --bg:#fff; --surface:#f8f9fa; --border:#dee2e6; --text:#111; --muted:#6c757d; --accent:#4f46e5; --accent2:#6366f1; --tag-bg:#f1f0ff; --tag-txt:#4f46e5; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header>
+    <h1>Rakesh S</h1>
+    <p class="role">Web Developer &amp; Computer Science Graduate</p>
+    <div class="contact">
+      <span>📍 Ramamurthy Nagar, Bengaluru</span>
+      <a href="mailto:ra1067rs@gmail.com">ra1067rs@gmail.com</a>
+      <span>8088609137</span>
+      <a href="https://linkedin.com/in/rakesh-s207811234" target="_blank">linkedin.com/in/rakesh-s207811234</a>
+    </div>
+  </header>
+
+  <!-- ── Profile ── -->
+  <section>
+    <div class="sec-label">Profile</div>
+    <p class="profile-text">
+      Motivated Computer Science graduate with experience in web development and customer support.
+      Skilled in Python, HTML, CSS, JavaScript, Git, and responsive UI design. Passionate about
+      system design, performance optimization, and building reliable, production-quality software.
+    </p>
+  </section>
+
+  <!-- ── Technical Skills ── -->
+  <section>
+    <div class="sec-label">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <span class="skill-value">Python, HTML, CSS, JavaScript, React.js, Next.js, PHP, MySQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Tools &amp; Platforms</span>
+        <span class="skill-value">VS Code, Git, Microsoft Excel</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Engineering Skills</span>
+        <span class="skill-value">Excellent engineering skills with focus on designing and implementing complex systems for production and experimental use</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Systems &amp; Architecture</span>
+        <span class="skill-value">Experience in architecture, artificial intelligence, compilers, database systems, data mining, distributed systems, machine learning, networking, and systems programming</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Performance &amp; Reliability</span>
+        <span class="skill-value">Experience with performance optimization, reliability engineering, systems data analysis, visualization tools, and debugging</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Other Skills</span>
+        <span class="skill-value">Technical Support, CRM Tools, Customer Service, DSA in Python</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Education ── -->
+  <section>
+    <div class="sec-label">Education</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-title">BCA – Computer Application</span>
+        <span class="tl-sub">RBANM's First Grade College, Bengaluru</span>
+        <span class="tl-period">2023 – 2026</span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-title">PUC</span>
+        <span class="tl-sub">KSEAB</span>
+        <span class="tl-period">2021 – 2023</span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-title">SSLC</span>
+        <span class="tl-sub">KSEAB</span>
+        <span class="tl-period">2020 – 2021</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Work Experience ── -->
+  <section>
+    <div class="sec-label">Work Experience</div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <span class="tl-title">Web Developer Intern – Elythra Edufyi Tech Solutions</span>
+        <span class="tl-period">Feb 2026 – Apr 2026</span>
+        <ul class="tl-bullets">
+          <li>Developed responsive web pages using HTML, CSS, JavaScript, and Python.</li>
+          <li>Worked on UI design, version control, and automation tasks.</li>
+          <li>Contributed to designing and implementing complex system components for production use.</li>
+          <li>Applied performance analysis and debugging practices to improve system reliability.</li>
+        </ul>
+        <div class="gh-links">
+          <a href="https://github.com/ra1067rs-crypto/project-1" target="_blank">⌥ github.com/ra1067rs-crypto/project-1</a>
+          <a href="https://github.com/ra1067rs-crypto/project2" target="_blank">⌥ github.com/ra1067rs-crypto/project2</a>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-title">Customer Support Executive – Impeck</span>
+        <span class="tl-period">Jan 2024 – Jun 2024</span>
+        <ul class="tl-bullets">
+          <li>Resolved technical/customer queries and maintained support records.</li>
+          <li>Improved communication and troubleshooting skills in a fast-paced environment.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section>
+    <div class="sec-label">Projects</div>
+    <div class="project-card">
+      <h3>Study Master Pro – Educational Web Platform</h3>
+      <div class="tech-line">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Tailwind CSS</span>
+      </div>
+      <ul class="tl-bullets">
+        <li>Developed a responsive single-page educational platform for students.</li>
+        <li>Implemented task management, dashboard analytics, subjects, and study tools.</li>
+        <li>Designed Login/Register authentication pages and interactive dashboard UI.</li>
+        <li>Built responsive layouts optimised for mobile and desktop devices.</li>
+        <li>Added offline-capable functionality and smooth user experience using vanilla JavaScript.</li>
+        <li>Focused on performance, reliability, and scalable front-end architecture.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Soft Skills ── -->
+  <section>
+    <div class="sec-label">Soft Skills</div>
+    <div class="soft-pills">
+      <span class="pill">Problem Solving</span>
+      <span class="pill">Team Collaboration</span>
+      <span class="pill">Communication</span>
+      <span class="pill">Adaptability</span>
+      <span class="pill">Time Management</span>
+    </div>
+  </section>
+
+  <!-- ── Achievements ── -->
+  <section>
+    <div class="sec-label">Achievements</div>
+    <div class="ach-list">
+      <div class="ach-item">Successfully completed Web Development Internship at Elythra Edufyi Tech Solutions.</div>
+      <div class="ach-item">NCC Cadet – Naval Wing, NCC 'B' &amp; 'C' Certificate Holder (2023–2026).</div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
